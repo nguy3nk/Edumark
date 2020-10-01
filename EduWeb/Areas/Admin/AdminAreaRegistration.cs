@@ -20,5 +20,5 @@ namespace EduWeb.Areas.Admin
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
-    }
+    }   
 }

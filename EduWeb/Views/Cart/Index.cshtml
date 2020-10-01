@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="bradcam_area breadcam_bg overlay2" style=" background-image: url(../../Content/img/banner/bg_1.jpg)">
+    <h3>Cart</h3>
+</div>
+<!--cart start-->
+<div class="setion cart">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+                <table id="cart" class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width:50%">Tên sản phẩm</th>
+                            <th style="width:10%">Giá</th>
+                            <th style="width:8%">Số lượng</th>
+                            <th style="width:22%" class="text-center">Thành tiền</th>
+                            <th style="width:10%"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in ) { 
+                             <tr>
+                                <td data-th="">
+                                    <div class="row">
+                                        <div class="col-sm-5 hidden-xs">
+                                            <img src="http://hocwebgiare.com/thiet_ke_web_chuan_demo/shopping_cart/images/090.jpg" alt="Sản phẩm 1" class="img-responsive" width="100">
+                                        </div>
+                                        <div class="col-sm-7 titel">
+                                            <h4 class="nomargin">Sản phẩm 1</h4>
+                                            <p>Mô tả của sản phẩm 1</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-th="Price">200.000 đ</td>
+                                <td data-th="Subtotal" class="text-left">200.000 đ</td>
+                                <td class="actions" data-th="">
+                                    <button id="btnEdit" class="btn btn-info btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button id="btnDelete" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr> 
+                          }
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-5 ml-auto align-self-center">
+                <form class="form-contact contact_form cart" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="Full name" id="Full name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full name'" placeholder="Full name">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="Email" id="Email" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="Phone number" id="Phone number" type="" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'" placeholder="Phone number">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="Adress" id="Adress" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adress'" placeholder="Adress">
+                            </div>
+                        </div>
+                        <!--<div class="col-12">
+                              <div class="form-group">
+                                  <textarea class="form-control w-100" name="Message" id="Message" cols="30" rows="5" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" placeholder=" Message"></textarea>
+                              </div>
+                          </div>-->
+                    </div>
+                    <!--<div class="form-group mt-3">
+                       <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                    </div>-->
+                </form>
+            </div>
+            <td><a href="courses.html" class="btn btn-success btn-block">SEND <i class="fa fa-angle-right"></i></a></td>
+        </div>
+    </div>
+</div>

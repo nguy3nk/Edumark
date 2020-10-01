@@ -1,10 +1,27 @@
-﻿
+﻿@model EduService.ViewModels.AccountViewModel.RegisterViewModel
 @Styles.Render("~/Content/admin")
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section css
+{
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../Content/admin/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../Content/admin/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="../Content/admin/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../Content/admin/adminlte.min.css">
+}
+@section scripts
+{   <!-- jQuery -->
+    <script src="../Content/admin/jquery.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../Content/admin/adminlte.min.js"></script>
 
+}
 <h2>Register</h2>
 <div class="center-block row">
     <div class="register-box center-block">
@@ -15,10 +32,16 @@
         <div class="card center-block">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "signupform", @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <form action="../../index.html" method="post">
+                    @*<form action="../../index.html" method="post">*@
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Full name">
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        @*<input type="text" class="form-control" placeholder="Full name">*@
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -26,7 +49,9 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                        @*<input type="text" class="form-control" placeholder="UserName">*@
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -34,7 +59,19 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        @*<input type="email" class="form-control" placeholder="Email">*@
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        @*<input type="password" class="form-control" placeholder="Password">*@
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -42,7 +79,9 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Retype password">
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @type = "password", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        @*<input type="password" class="form-control" placeholder="Retype password">*@
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -64,8 +103,8 @@
                         </div>
                         <!-- /.col -->
                     </div>
-                </form>
-
+                    @*</form>*@
+                }
                 <div class="social-auth-links text-center">
                     <p>- OR -</p>
                     <a href="#" class="btn btn-block btn-primary">

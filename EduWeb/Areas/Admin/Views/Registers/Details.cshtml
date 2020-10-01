@@ -1,0 +1,84 @@
+﻿@model EduService.Models.Register
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Register</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.AccountId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.AccountId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Account.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.Account.FullName)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Debt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Debt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsExtraLab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsExtraLab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Classification", "Classification", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

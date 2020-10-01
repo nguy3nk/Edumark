@@ -1,12 +1,13 @@
-﻿using EduModel.Models;
-using EduModel.Repository;
-using EduModel.ViewModels.AccountViewModel;
-using EduWeb.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EduService.Models;
+using EduService.Repository;
+using EduService.ViewModels.AccountViewModel;
+using EduWeb.Models;
 
 namespace EduWeb.Controllers
 {
@@ -14,13 +15,11 @@ namespace EduWeb.Controllers
     {
         Repository<Account> _repoAccount;
         Repository<GroupRole> _repoGroupRole;
-        Repository<PersonalRole> _repoPersonalRoles;
 
         public AccountController()
         {
             _repoAccount = new Repository<Account>();
             _repoGroupRole = new Repository<GroupRole>();
-            _repoPersonalRoles = new Repository<PersonalRole>();
         }
         // GET: Account
         public ActionResult Index()
@@ -42,28 +41,27 @@ namespace EduWeb.Controllers
             if (ModelState.IsValid)
             {
                 loginViewModel.Password = loginViewModel.Password.ToMD5();
-                // Tìm customer theo email và pass đăng nhập
-                var data_account = _repoAccount.SingleBy(x => x.Username.Equals(loginViewModel.Username) && x.Password.Equals(loginViewModel.Password));
+                var data_user = _repoAccount.SingleBy(x => x.Username.Equals(loginViewModel.Username) && x.Password.Equals(loginViewModel.Password));
 
-                if (data_account != null)
+                if (data_user != null)
                 {
 
 
-                    if (data_account.Status == false)
+                    if (data_user.Status == false)
                     {
                         ViewBag.err1 = "Your account has been locked";
                         return View();
                     }
                     else
                     {
-                        Session["User"] = data_account;
+                        Session["User"] = data_user;
                         // Lấy danh sách các quyền 
-                        var permissions = _repoGroupRole.GetBy(x => x.GroupId == data_account.GroupId).Select(x => x.BusinessId + "_" + x.RoleId);
+                        var permissions = _repoGroupRole.GetBy(x => x.GroupId == data_user.GroupId).Select(x => x.BusinessId + "_" + x.RoleId);
                         // Business_Add
                         Session["roles"] = permissions;
-                        Session["roleId"] = data_account.GroupId;
+                        Session["roleId"] = data_user.GroupId;
 
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home", new { Area = "Admin" });
                     }
 
                 }
@@ -88,22 +86,23 @@ namespace EduWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                Account a = new Account();
-                a.FullName = registerViewModel.FullName;
-                a.Email = registerViewModel.Email;
-                a.Password = registerViewModel.Password.ToMD5();
-                a.GroupId = 2;
-                a.Status = true;
+                Account account = new Account();
+                account.FullName = registerViewModel.FullName;
+                account.Email = registerViewModel.Email;
+                // mã hóa mật khẩu
+                account.Password = registerViewModel.Password.ToMD5();
+                account.GroupId = 2;
+                account.Status = true;
 
-                if (_repoAccount.GetAll().FirstOrDefault(x => x.Email == a.Email) != null)
+                if (_repoAccount.GetAll().FirstOrDefault(x => x.Email == account.Email) != null)
                 {
                     ModelState.AddModelError("Email", "Email already exists");
                     return View(registerViewModel);
                 }
 
-                if (_repoAccount.Add(a))
+                if (_repoAccount.Add(account))
                 {
-                    Helper.SendMail(registerViewModel.Email, "user@gmail.com", "password", "Đăng ký tài khoản", string.Format(@"
+                    Helper.SendMail(registerViewModel.Email, "nguy4nk@gmail.com", "khanhdaica", "Đăng ký tài khoản", string.Format(@"
                     <h1> Đăng ký tài khoản thành công</h1>
                     <b>Email đăng ký :</b> {0}
                     <p>Visit: https://localhost:49178</p>
@@ -115,7 +114,7 @@ namespace EduWeb.Controllers
                 return View(registerViewModel);
             }
 
-            return View(registerViewModel);
+            return View();
         }
 
         public ActionResult SignOut()
