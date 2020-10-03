@@ -39,7 +39,7 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Extralab extralab = _extra.Get(id);
+            Extralab extralab = _extra.GetAll().AsQueryable().Include(c => c.Course).FirstOrDefault(x => x.CourseId == id);
             //Extralab extralab = db.Extralabs.Find(id);
             if (extralab == null)
             {

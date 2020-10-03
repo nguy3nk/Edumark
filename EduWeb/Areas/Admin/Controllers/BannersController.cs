@@ -14,7 +14,7 @@ namespace EduWeb.Areas.Admin.Controllers
 {
     public class BannersController : Controller
     {
-        //private EdumarkDBContext db = new EdumarkDBContext();
+        private EdumarkDBContext db = new EdumarkDBContext();
 
         Repository<Banner> _banerRepository;
 

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using EduService;
 using EduService.Models;
 using EduService.Repository;
+using EduWeb.Models;
 
 namespace EduWeb.Areas.Admin.Controllers
 {
@@ -17,10 +18,12 @@ namespace EduWeb.Areas.Admin.Controllers
         //private EdumarkDBContext db = new EdumarkDBContext();
 
         Repository<Blog> _blogRepository;
+        Repository<BlogPost> _blogPost;
 
         public BlogsController()
         {
             _blogRepository = new Repository<Blog>();
+            _blogPost = new Repository<BlogPost>();
         }
         // GET: Admin/Blogs
         public ActionResult Index()
@@ -123,12 +126,21 @@ namespace EduWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Blog blog = _blogRepository.Get(id);
-            _blogRepository.Remove(blog);
+            //Xóa thuộc các post thuộc Blog
+            _blogPost.RemoveRange(_blogPost.GetBy(x => x.BlogId == id));
+            _blogRepository.Remove(id);
+
+            TempData["msg"] = new ResponseMessage()
+            {
+                Type = "callout-success",
+                Message = "DeleteSuccess"
+            };
+            return RedirectToAction("Index");
             //Blog blog = db.Blogs.Find(id);
             //db.Blogs.Remove(blog);
             //db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
         }
 
         /*protected override void Dispose(bool disposing)

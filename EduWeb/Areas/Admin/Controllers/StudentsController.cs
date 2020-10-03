@@ -43,7 +43,7 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = _student.Get(id);
+            Student student = _student.GetAll().AsQueryable().Include(s => s.Account).Include(s => s.Class).FirstOrDefault(s => s.AccountId == id);
             //Student student = db.Students.Find(id);
             if (student == null)
             {

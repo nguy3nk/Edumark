@@ -41,7 +41,7 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Program program = _program.Get(id);
+            Program program = _program.GetAll().AsQueryable().Include(p => p.Course).Include(p => p.Subject).FirstOrDefault(l => l.ProgramId == id);
             //Program program = db.Programs.Find(id);
             if (program == null)
             {

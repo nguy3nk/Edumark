@@ -43,7 +43,8 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lecturer lecturer = _lecRepository.Get(id);
+            Lecturer lecturer = _lecRepository.GetAll().AsQueryable().Include(x => x.Account).FirstOrDefault(l => l.AccountId == id);
+            //Lecturer lecturer = _lecRepository.Get(id);
             if (lecturer == null)
             {
                 return HttpNotFound();

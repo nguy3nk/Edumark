@@ -39,7 +39,8 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = _accountRepository.Get(id);
+            Account account = _accountRepository.GetAll().AsQueryable().Include(x => x.Group).FirstOrDefault(x => x.AccountId == id);
+
             //Account account = db.Accounts.Find(id);
             if (account == null)
             {

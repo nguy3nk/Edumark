@@ -20,7 +20,6 @@ namespace EduWeb
 
             bundles.Add(new ScriptBundle("~/Areas/Admin/Content/javascript").Include(
                   "~/Areas/Admin/Content/plugins/jquery/jquery.min.js",
-                  "~/Areas/Admin/Content/plugins/jquery-ui/jquery-ui.min.js",
                   "~/Areas/Admin/Content/plugins/bootstrap/js/bootstrap.bundle.min.js",
                   "~/Areas/Admin/Content/plugins/chart.js/Chart.min.js",
                   "~/Areas/Admin/Content/plugins/sparklines/sparkline.js",
@@ -35,6 +34,7 @@ namespace EduWeb
                   "~/Areas/Admin/Content/dist/js/pages/dashboard.js",
                   "~/Areas/Admin/Content/dist/js/demo.js",
                   "~/Areas/Admin/Content/plugins/daterangepicker/daterangepicker.js",
+                  "~/Areas/Admin/Content/plugins/jquery-ui/jquery-ui.min.js",
                   "~/Areas/Admin/Content/dist/js/adminlte.js"));
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.

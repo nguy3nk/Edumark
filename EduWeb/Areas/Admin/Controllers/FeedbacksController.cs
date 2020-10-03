@@ -41,7 +41,7 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Feedback feedback = _feedback.Get(id);
+            Feedback feedback = _feedback.GetAll().AsQueryable().Include(f => f.Account).Include(f => f.Course).FirstOrDefault(x => x.FeedbackId == id);
             //Feedback feedback = db.Feedbacks.Find(id);
             if (feedback == null)
             {

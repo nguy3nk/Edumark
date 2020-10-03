@@ -41,7 +41,7 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = _comment.Get(id);
+            Comment comment = _comment.GetAll().AsQueryable().Include(c => c.Account).Include(c => c.BlogPost).FirstOrDefault(x => x.CommentId == id);
             //Comment comment = db.Comments.Find(id);
             if (comment == null)
             {

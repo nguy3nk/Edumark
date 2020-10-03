@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using EduService;
 using EduService.Models;
 using EduService.Repository;
+using EduWeb.Models;
 
 namespace EduWeb.Areas.Admin.Controllers
 {
@@ -39,7 +40,7 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = _postRepository.Get(id);
+            BlogPost blogPost = _postRepository.GetAll().AsQueryable().Include(b => b.Blog).FirstOrDefault(x => x.BlogId == id);
             //BlogPost blogPost = db.BlogPosts.Find(id);
             if (blogPost == null)
             {
@@ -104,10 +105,26 @@ namespace EduWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _postRepository.Edit(blogPost);
+                if (_postRepository.Edit(blogPost))
+                {
+                    TempData["msg"] = new ResponseMessage()
+                    {
+                        Type = "callout-success",
+                        Message = "Update Success!!!"
+                    };
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["msg"] = new ResponseMessage()
+                    {
+                        Type = "callout-danger",
+                        Message = "Update False!!!"
+                    };
+                    return View(blogPost);
+                }
                 //db.Entry(blogPost).State = EntityState.Modified;
                 //db.SaveChanges();
-                return RedirectToAction("Index");
             }
             ViewBag.BlogId = new SelectList(_blogRepository.GetAll(), "BlogId", "BlogName", blogPost.BlogId);
             //ViewBag.BlogId = new SelectList(db.Blogs, "BlogId", "BlogName", blogPost.BlogId);
@@ -136,11 +153,28 @@ namespace EduWeb.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             BlogPost blogPost = _postRepository.Get(id);
-            _postRepository.Remove(blogPost);
+            if (_postRepository.Remove(blogPost))
+            {
+                TempData["msg"] = new ResponseMessage()
+                {
+                    Type = "callout-success",
+                    Message = "DeleteSuccess"
+                };
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                TempData["msg"] = new ResponseMessage()
+                {
+                    Type = "callout-danger",
+                    Message = "Update False!!!"
+                };
+                return View(blogPost);
+            }
             //BlogPost blogPost = db.BlogPosts.Find(id);
             //db.BlogPosts.Remove(blogPost);
             //db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         /*protected override void Dispose(bool disposing)

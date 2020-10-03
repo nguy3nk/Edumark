@@ -11,7 +11,6 @@ namespace EduService.Models
     public class Extralab
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CourseId { get; set; }
         public int Session { get; set; }
         public float Price { get; set; }
