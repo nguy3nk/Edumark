@@ -5,55 +5,130 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Class</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Course.CourseName)
-        </dt>
+<div class="">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Class Detail</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Class Detail</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
-        <dd>
-            @Html.DisplayFor(model => model.Course.CourseName)
-        </dd>
+    <!-- Main content -->
+    <section class="content">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Lecturer.Faculty)
-        </dt>
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Class Detail</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.Lecturer.Faculty)
-        </dd>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                        <div class="row">
+                            <div class="col-12">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ClassName)
-        </dt>
+                                <div class="post">
+                                    <div class="user-block">
+                                        <span class="username">
+                                            <a href="#">
+                                                @Html.DisplayNameFor(model => model.Course.CourseName)
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <p>
+                                        @Html.DisplayFor(model => model.Course.CourseName)
+                                    </p>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ClassName)
-        </dd>
+                                <div class="post clearfix">
+                                    <div class="user-block">
+                                        <span class="username">
+                                            <a href="#">@Html.DisplayNameFor(model => model.Lecturer.Faculty)</a>
+                                        </span>
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <p>
+                                        @Html.DisplayFor(model => model.Lecturer.Faculty)
+                                    </p>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </dt>
+                                <div class="post">
+                                    <div class="user-block">
+                                        <span class="username">
+                                            <a href="#">@Html.DisplayNameFor(model => model.ClassName)</a>
+                                        </span>
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <p>
+                                        @Html.DisplayFor(model => model.ClassName)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+                        <div class="text-muted">
+                            <p class="text-sm">
+                                @Html.DisplayNameFor(model => model.StartTime)
+                                <b class="d-block">@Html.DisplayFor(model => model.StartTime)</b>
+                            </p>
+                        </div>
+                        <div class="text-muted">
+                            <p class="text-sm">
+                                @Html.DisplayNameFor(model => model.EndTime)
+                                <b class="d-block">@Html.DisplayFor(model => model.EndTime)</b>
+                            </p>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartTime)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndTime)
-        </dd>
-
-    </dl>
+                        <h5 class="mt-5 text-muted">Project files</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
+                            </li>
+                            <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
+                            </li>
+                            <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
+                            </li>
+                            <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
+                            </li>
+                            <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
+                            </li>
+                        </ul>
+                        <div class="text-center mt-5 mb-3">
+                            <a href="#" class="btn btn-sm btn-primary">@Html.ActionLink("Edit", "Edit", new { id = Model.ClassId })</a>
+                            <a href="#" class="btn btn-sm btn-warning">@Html.ActionLink("Back to List", "Index")</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

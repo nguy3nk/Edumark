@@ -48,6 +48,21 @@ namespace EduWeb.Areas.Admin.Controllers
             }
             return View(account);
         }
+        public ActionResult MyAccount(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account account = _accountRepository.GetAll().AsQueryable().Include(x => x.Group).FirstOrDefault(x => x.AccountId == id);
+
+            //Account account = db.Accounts.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            return View(account);
+        }
 
         // GET: Admin/Accounts/Create
         public ActionResult Create()

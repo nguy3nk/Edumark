@@ -57,9 +57,9 @@ namespace EduWeb.Areas.Admin.Controllers
         {
             var lecturer = _lecRepository.GetAll().Select(l => l.AccountId);
             var student = _studentRepository.GetAll().Select(s => s.AccountId);
+            var dataSelect = _accountRepository.GetAll().AsEnumerable().Where(x => !lecturer.Contains(x.AccountId)).Where(x => !student.Contains(x.AccountId));
             //var dataSelect = _accountRepository.GetAll().AsQueryable().Where(x => (!_lecRepository.GetAll().AsQueryable().Where(l => l.AccountId == x.AccountId).Any()) && (!_lecRepository.GetAll().AsQueryable().Where(l => l.AccountId == x.AccountId).Any()));
             //var dataSelect = _accountRepository.GetAll();
-            var dataSelect = _accountRepository.GetAll().AsEnumerable().Where(x => !lecturer.Contains(x.AccountId)).Where(x => !student.Contains(x.AccountId));
             ViewBag.AccountId = new SelectList(dataSelect, "AccountId", "Username") ;
             return View();
         }

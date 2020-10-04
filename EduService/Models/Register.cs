@@ -18,8 +18,12 @@ namespace EduService.Models
         public int CourseId { get; set; }
         public bool IsExtraLab { get; set; }
         public DateTime PaidTime { get; set; }
-        public float Debt { get; set; }
         public float Price { get; set; }
+        public float SalePrice { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
         public bool Status { get; set; }
 
         [ForeignKey("CourseId")]

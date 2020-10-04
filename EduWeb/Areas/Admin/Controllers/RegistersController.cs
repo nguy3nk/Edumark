@@ -48,7 +48,7 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Register register = _repoRegister.GetAll().AsQueryable().Include(r => r.Course).Include(r => r.Student).FirstOrDefault(l => l.RegisterId == id);
+            Register register = _repoRegister.GetAll().AsQueryable().Include(r => r.Course).Include(r => r.Student).Include(r => r.Student.Account).FirstOrDefault(l => l.RegisterId == id);
             //Register register = db.Registers.Find(id);
             if (register == null)
             {

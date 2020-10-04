@@ -3,6 +3,9 @@
 
 @{
     Account account = Session["Account"] as Account;
+    account = new Account();
+    account.AccountId = 12;
+    account.FullName = "haha";
 }
 <!DOCTYPE html>
 <html>
@@ -178,14 +181,14 @@
                                 </div>
                                 <div class="info">
                                     <p>
-                                        Alexander Pierce
+                                        @account.FullName
                                     </p>
                                     <i class="right fas fa-angle-left"></i>
                                 </div>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/Account/profile1.html" class="nav-link">
+                                    <a href="@Url.Action("MyAccount", "Accounts", new { Area = "Admin", id = account.AccountId })" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Profile</p>
                                     </a>
@@ -220,12 +223,6 @@
                                         <a href="@Url.Action("Index", "Courses", new { Area = "Admin" })" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Courses Manager</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="@Url.Action("Index", "Programs", new { Area = "Admin" })" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Programs Manager</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
