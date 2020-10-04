@@ -20,6 +20,7 @@ namespace EduWeb.Areas.Admin.Controllers
         Repository<Lecturer> _lecturer;
         Repository<Class> _class;
         Repository<Account> _account;
+        Repository<Register> _register;
 
         public StudentsController()
         {
@@ -27,6 +28,7 @@ namespace EduWeb.Areas.Admin.Controllers
             _class = new Repository<Class>();
             _account = new Repository<Account>();
             _lecturer = new Repository<Lecturer>();
+            _register = new Repository<Register>();
         }
         // GET: Admin/Students
         public ActionResult Index()
@@ -53,15 +55,18 @@ namespace EduWeb.Areas.Admin.Controllers
         }
 
         // GET: Admin/Students/Create
-        public ActionResult Create()
+        public ActionResult Create(int registerId)
         {
-            var lecturer = _lecturer.GetAll().Select(l => l.AccountId);
-            var student = _student.GetAll().Select(s => s.AccountId);
+            //var lecturer = _lecturer.GetAll().Select(l => l.AccountId);
+            //var student = _student.GetAll().Select(s => s.AccountId);
             //var dataSelect = _accountRepository.GetAll().AsQueryable().Where(x => (!_lecRepository.GetAll().AsQueryable().Where(l => l.AccountId == x.AccountId).Any()) && (!_lecRepository.GetAll().AsQueryable().Where(l => l.AccountId == x.AccountId).Any()));
             //var dataSelect = _accountRepository.GetAll();
-            var dataSelect = _account.GetAll().AsEnumerable().Where(x => !lecturer.Contains(x.AccountId)).Where(x => !student.Contains(x.AccountId));
-            ViewBag.AccountId = new SelectList(dataSelect, "AccountId", "Username");
-            ViewBag.ClassId = new SelectList(_class.GetAll(), "ClassId", "ClassName");
+            Register register = _register.Get(registerId);
+            var listAccounts = _account.GetAll().AsQueryable().Where(x => x.AccountId == register.AccountId).ToList();
+            var listClasses = _class.GetAll().AsQueryable().Where(x => x.CourseId == register.CourseId).ToList();
+            ViewBag.AccountId = new SelectList(listAccounts, "AccountId", "FullName");
+            ViewBag.ClassId = new SelectList(listClasses, "ClassId", "ClassName");
+            ViewBag.RegisterId = registerId;
             //ViewBag.AccountId = new SelectList(db.Accounts, "AccountId", "Username");
             //ViewBag.ClassId = new SelectList(db.Classes, "ClassId", "ClassName");
             return View();
@@ -72,17 +77,23 @@ namespace EduWeb.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccountId,StudentId,ClassId")] Student student)
+        public ActionResult Create([Bind(Include = "AccountId,StudentId,ClassId")] Student student, int registerId)
         {
+            ViewBag.RegisterId = registerId;
             if (ModelState.IsValid)
             {
-                _student.Add(student);
+                if (_student.Add(student))
+                    return RedirectToAction("Details", "Registers", new { id = registerId });
+
                 //db.Students.Add(student);
                 //db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
-            ViewBag.AccountId = new SelectList(_account.GetAll(), "AccountId", "Username", student.AccountId);
-            ViewBag.ClassId = new SelectList(_class.GetAll(), "ClassId", "ClassName", student.ClassId);
+            Register register = _register.Get(registerId);
+            var listAccounts = _account.GetAll().AsQueryable().Where(x => x.AccountId == register.AccountId);
+            var listClasses = _class.GetAll().AsQueryable().Where(x => x.CourseId == register.CourseId);
+            ViewBag.AccountId = new SelectList(listAccounts, "AccountId", "FullName", student.AccountId);
+            ViewBag.ClassId = new SelectList(listClasses, "ClassId", "ClassName", student.ClassId);
             //ViewBag.AccountId = new SelectList(db.Accounts, "AccountId", "Username", student.AccountId);
             //ViewBag.ClassId = new SelectList(db.Classes, "ClassId", "ClassName", student.ClassId);
             return View(student);

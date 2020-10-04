@@ -1,80 +1,148 @@
 ﻿@model EduService.Models.Register
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Register</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.AccountID, "AccountID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("AccountID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AccountID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsExtraLab, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsExtraLab)
-                    @Html.ValidationMessageFor(model => model.IsExtraLab, "", new { @class = "text-danger" })
+<div class="">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Register Create</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Register Create</li>
+                    </ol>
                 </div>
             </div>
-        </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PaidTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PaidTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PaidTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <!-- Main content -->
+    <section class="content">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Register Create</h3>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Status)
-                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @*@Html.HiddenFor(model => model.AccountID)*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-5 order-2 order-md-1">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="post">
+                                        <div class="user-block">
+                                            <span class="username">
+                                                <a href="#">
+                                                    @Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <p>
+                                            @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                                        </p>
+                                    </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+                                    <div class="post">
+                                        <div class="user-block">
+                                            <span class="username">
+                                                <a href="#">
+                                                    @Html.LabelFor(model => model.AccountId, "AccountId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <p>
+                                            @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-7 order-1 order-md-2">
+                            <h3 class="text-primary"><i class="fas fa-paint-brush"></i> @Html.DisplayNameFor(model => model.Course.Image)</h3>
+                            <img style="width: 126px" src="@Html.DisplayFor(model => model.Course.Image)" />
+                            <br>
+                            <div class="text-muted">
+                                <p class="text-sm">
+                                    @Html.LabelFor(model => model.PaidTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <b class="d-block">
+                                        @Html.EditorFor(model => model.PaidTime, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PaidTime, "", new { @class = "text-danger" })
+                                    </b>
+                                </p>
+                            </div>
+                            <div class="text-muted">
+                                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="text-sm">
+                                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                </p>
+                            </div>
+                            <div class="text-muted">
+                                @Html.LabelFor(model => model.SalePrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="text-sm">
+                                    @Html.EditorFor(model => model.SalePrice, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SalePrice, "", new { @class = "text-danger" })
+                                </p>
+                            </div>
+                            <div class="text-muted">
+                                <p class="text-sm">
+                                    @Html.LabelFor(model => model.IsExtraLab, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <b class="d-block">
+                                        @Html.EditorFor(model => model.IsExtraLab)
+                                        @Html.ValidationMessageFor(model => model.IsExtraLab, "", new { @class = "text-danger" })
+                                    </b>
+                                </p>
+                            </div>
+                            <div class="text-muted">
+                                <p class="text-sm">
+                                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <b class="d-block">
+                                        @Html.EditorFor(model => model.Status)
+                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                    </b>
+                                </p>
+                            </div>
+                            <div class="text-center mt-5 mb-3">
+                                <a href="#" class="btn btn-sm btn-warning">@Html.ActionLink("Back to List", "Index")</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            }
+
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
 </div>

@@ -14,7 +14,7 @@ namespace EduService.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RegisterId { get; set; }
-        public int AccountID { get; set; }
+        public int AccountId { get; set; }
         public int CourseId { get; set; }
         public bool IsExtraLab { get; set; }
         public DateTime PaidTime { get; set; }
@@ -29,7 +29,7 @@ namespace EduService.Models
         [ForeignKey("CourseId")]
         public Course Course { get; set; }
 
-        [ForeignKey("AccountID")]
+        [ForeignKey("AccountId")]
         public Student Student { get; set; }
     }
 }

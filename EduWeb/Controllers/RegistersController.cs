@@ -32,7 +32,7 @@ namespace EduWeb.Controllers
         public ActionResult Create()
         {
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName");
-            ViewBag.AccountID = new SelectList(db.Students, "AccountId", "AccountId");
+            ViewBag.AccountId = new SelectList(db.Students, "AccountId", "AccountId");
             return View();
         }
 
@@ -51,7 +51,7 @@ namespace EduWeb.Controllers
             }
 
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", register.CourseId);
-            ViewBag.AccountID = new SelectList(db.Students, "AccountId", "AccountId", register.AccountID);
+            ViewBag.AccountId = new SelectList(db.Students, "AccountId", "AccountId", register.AccountId);
             return View(register);
         }
 
@@ -68,7 +68,7 @@ namespace EduWeb.Controllers
                 return HttpNotFound();
             }
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", register.CourseId);
-            ViewBag.AccountID = new SelectList(db.Students, "AccountId", "AccountId", register.AccountID);
+            ViewBag.AccountId = new SelectList(db.Students, "AccountId", "AccountId", register.AccountId);
             return View(register);
         }
 
@@ -86,7 +86,7 @@ namespace EduWeb.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", register.CourseId);
-            ViewBag.AccountID = new SelectList(db.Students, "AccountId", "AccountId", register.AccountID);
+            ViewBag.AccountId = new SelectList(db.Students, "AccountId", "AccountId", register.AccountId);
             return View(register);
         }
 

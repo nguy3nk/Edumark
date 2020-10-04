@@ -71,13 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EdumarkDBContext.cs" />
-    <Compile Include="Migrations\202009301538478_v31.cs" />
-    <Compile Include="Migrations\202009301538478_v31.designer.cs">
-      <DependentUpon>202009301538478_v31.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010040244316_v4.cs" />
-    <Compile Include="Migrations\202010040244316_v4.designer.cs">
-      <DependentUpon>202010040244316_v4.cs</DependentUpon>
+    <Compile Include="Migrations\202010041710252_v5.cs" />
+    <Compile Include="Migrations\202010041710252_v5.designer.cs">
+      <DependentUpon>202010041710252_v5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -127,11 +123,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009301538478_v31.resx">
-      <DependentUpon>202009301538478_v31.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010040244316_v4.resx">
-      <DependentUpon>202010040244316_v4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010041710252_v5.resx">
+      <DependentUpon>202010041710252_v5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

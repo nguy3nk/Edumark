@@ -41,25 +41,25 @@ namespace EduWeb.Controllers
             if (ModelState.IsValid)
             {
                 loginViewModel.Password = loginViewModel.Password.ToMD5();
-                var data_user = _repoAccount.SingleBy(x => x.Username.Equals(loginViewModel.Username) && x.Password.Equals(loginViewModel.Password));
+                var account = _repoAccount.SingleBy(x => x.Username.Equals(loginViewModel.Username) && x.Password.Equals(loginViewModel.Password));
 
-                if (data_user != null)
+                if (account != null)
                 {
 
 
-                    if (data_user.Status == false)
+                    if (account.Status == false)
                     {
                         ViewBag.err1 = "Your account has been locked";
                         return View();
                     }
                     else
                     {
-                        Session["User"] = data_user;
+                        Session["Account"] = account;
                         // Lấy danh sách các quyền 
-                        var permissions = _repoGroupRole.GetBy(x => x.GroupId == data_user.GroupId).Select(x => x.BusinessId + "_" + x.RoleId);
+                        var permissions = _repoGroupRole.GetBy(x => x.GroupId == account.GroupId).Select(x => x.BusinessId + "_" + x.RoleId);
                         // Business_Add
                         Session["roles"] = permissions;
-                        Session["roleId"] = data_user.GroupId;
+                        Session["roleId"] = account.GroupId;
 
                         return RedirectToAction("Index", "Home", new { Area = "Admin" });
                     }
@@ -67,7 +67,7 @@ namespace EduWeb.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Sai tài khoản hoặc mật khẩu");
+                    ModelState.AddModelError("", "Username or password worng !!!");
                     return View();
                 }
 
@@ -102,7 +102,7 @@ namespace EduWeb.Controllers
 
                 if (_repoAccount.Add(account))
                 {
-                    Helper.SendMail(registerViewModel.Email, "nguy4nk@gmail.com", "khanhdaica", "Đăng ký tài khoản", string.Format(@"
+                    Helper.SendMail(registerViewModel.Email, "nguy4nk@gmail.com", "", "Đăng ký tài khoản", string.Format(@"
                     <h1> Đăng ký tài khoản thành công</h1>
                     <b>Email đăng ký :</b> {0}
                     <p>Visit: https://localhost:49178</p>
