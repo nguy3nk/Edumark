@@ -74,7 +74,7 @@
                                     </a>
                                 </div>
                                 <div class="live_chat_btn">
-                                    <a class="boxed_btn_orange" href="@Url.Action("Index","Cart")">
+                                    <a class="boxed_btn_orange" href="@Url.Action("Payment","Cart")">
 
                                         <span>cart</span>
                                     </a>
@@ -284,5 +284,6 @@
     <script src="~/Scripts/js/mail-script.js"></script>
 
     <script src="~/Scripts/js/main.js"></script>
+    @RenderSection("jsFooter", required: false)
 </body>
 </html>

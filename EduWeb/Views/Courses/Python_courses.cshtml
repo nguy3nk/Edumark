@@ -45,101 +45,21 @@
         <div class="row">
             <div class="col-xl-7 col-lg-7">
                 <div class="single_courses">
-                    <h3>Objectives</h3>
-                    <p>
-                        Know how to work with Python from scratch
-                        - Specialized in Python & MySQL
-                        - Automatically build B2B, B2C e-commerce websites with beautiful interface, customer-friendly and full of features.
-                        - Develop and deploy web applications with Django.
-                    </p>
-                    <h3 class="second_title">Course Outline</h3>
-                </div>
-                <div class="outline_courses_info">
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <i class="flaticon-question"></i> Windows and Ubuntu operating systems
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                    Introducing web application - B2B, B2C e-commerce web. Stages of web development and deployment in different environments. Install and use Windows and Ubuntu operating systems.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                       <span> <i class="flaticon-question"></i>WEB interface design</span>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="">
-                                <div class="card-body">
-                                    Introducing Web programming language, HTML5 text markup language Work with tables and forms in HTML5 Introducing content tags in HTML5 An introduction to CSS, CSS3 and advanced features Introduce and use Java Script in website Object and event handlers in Java Script An introduction to jquery, ajax and effects Use Bootstrap, Responsible in web design Building a static interface for a B2C e-commerce site
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <i class="flaticon-question"></i> Application programming with Python & MySQL
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                    Overview of the Python programming language Operator and branch statements Advanced data types Functions and Modules Object oriented programming Handling File, Packages - Exception error Introduction to the MySQL database management system MySQL statements MySQL connection in Python
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="heading_4">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
-                                        <i class="flaticon-question"></i> Practice WHCJ
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse_4" class="collapse" aria-labelledby="heading_4" data-parent="#accordion">
-                                <div class="card-body">
-                                    Introducing Django Works with URLs and View, Models Work with Template Store and Upload files with Django, Cookie, and session ORM queries in Django, Model, Migrate
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="heading_5">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" aria-controls="collapse_5">
-                                        <i class="flaticon-question"></i> Final project <span>with team</span>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse_5" class="collapse" aria-labelledby="heading_5" data-parent="#accordion">
-                                <div class="card-body">
-                                    Select team, topic, analyze design, assign work, create application on Django Framework. Build admin page Build user pages.
-
-                                </div>
-                            </div>
-                        </div>
+                    <div class="feedback_info">
+                        <h3>Write your feedback</h3>
+                        <form action="#">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
+                            <button type="submit" class="boxed_btn courses">Submit</button>
+                        </form>
                     </div>
                 </div>
+                
             </div>
             <div class="col-xl-5 col-lg-5">
                 <div class="courses_sidebar">
                     <div class="video_thumb">
-                        <img src="~/Content/img/latest_blog/video.png" alt="">
-                        <a class="popup-video" href="https://www.youtube.com/watch?v=AjgD3CvWzS0">
-                            <i class="fa fa-play"></i>
-                        </a>
+                        <img src="~/Content/img/courses/6.png" alt="">
+                        
                     </div>
                     <div class="author_info">
                         <div class="auhor_header">
@@ -161,21 +81,8 @@
                             <li><a href="#"> <i class="ti-linkedin"></i> </a></li>
                         </ul>
                     </div>
-                    <a href="#" class="boxed_btn">Buy Course</a>
-                    <div class="feedback_info">
-                        <h3>Write your feedback</h3>
-                        <p>Your rating</p>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-
-                        <form action="#">
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
-                            <button type="submit" class="boxed_btn">Submit</button>
-                        </form>
-                    </div>
+                    <a href="@Url.Action("Payment","Cart",new { id= 1})" class="boxed_btn">Buy Course</a>
+                    
                 </div>
             </div>
         </div>

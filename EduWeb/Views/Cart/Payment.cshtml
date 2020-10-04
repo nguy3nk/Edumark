@@ -1,0 +1,101 @@
+﻿@model EduService.Models.Register
+@{ ViewBag.Title = "Index"; }
+
+@section jsFooter{
+    <script src="~/Scripts/js/CartControlle.js"></script>
+}
+<div class="bradcam_area breadcam_bg overlay2" style=" background-image: url(../../Content/img/banner/bg_1.jpg)">
+    <h3>Cart</h3>
+</div>
+<!--cart start-->
+<div class="setion cart">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+                <table id="cart" class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+
+                            <td style="width:40%">@Html.DisplayNameFor(model => model.Course.Image)</td>
+                            <td style="width:20%">@Html.DisplayNameFor(model => model.Course.CourseName)</td>
+                            <td style="width:10%">@Html.DisplayNameFor(model => model.Course.SalePrice)</td>
+                            <td style="width:10%">@Html.DisplayNameFor(model => model.Course.Price)</td>
+                            <td style="width:10%"> </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="~/Content/img/courses/5.png" width="100%" />@Html.DisplayFor(model => model.Course.Image) </td>
+                            <td data-th="Courses">@Html.DisplayFor(model => model.Course.CourseName) </td>
+                            <td data-th=" Sale Price">@Html.DisplayFor(model => model.Course.SalePrice)</td>
+                            <td data-th="Price" class="text-left">@Html.DisplayFor(model => model.Course.Price)</td>
+                            <td class="actions" data-th="">
+                                <button id="btnBack" class="btn btn-info btn-sm">
+                                    <i class="fas fa-backward"></i>
+                                </button>
+                                <button id="btnDeleteAll" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-5 ml-auto align-self-center">
+                <h1 class="thongtin">
+                    Fill full information into here
+                </h1>
+         @using (Html.BeginForm())
+           {
+            @Html.AntiForgeryToken() 
+                    @*<form class="form-contact contact_form cart" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">*@
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name", onblur = "this.placeholder = 'Full name'" } })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", onblur = "this.placeholder = 'Email'" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Phone number", onblur = "this.placeholder = 'Phone number'" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address", onblur = "this.placeholder = 'Adress'" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    
+                    @Html.EditorFor(model => model.AccountID, new { htmlAttributes = new { type = "hidden"} })
+                    @Html.EditorFor(model => model.CourseId, new { htmlAttributes = new { type = "hidden"} })
+                    @Html.EditorFor(model => model.Course.CourseName, new { htmlAttributes = new { type = "hidden" , value = "asds"}})
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { type = "hidden"} })
+                    @Html.EditorFor(model => model.SalePrice, new { htmlAttributes = new { type = "hidden"} })
+                </div>
+                <h6>
+                    Check the information upon registration! Thank you
+                </h6>
+                  <div class="form-group mt-3">
+                    <button type="submit" class="button button-contactForm boxed-btn">REGISTER</button>
+                  </div> @*</form>*@
+         }
+            </div>
+
+        </div>
+       
+    </div>
+</div>

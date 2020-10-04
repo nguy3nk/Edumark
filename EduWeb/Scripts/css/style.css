@@ -3017,7 +3017,7 @@ h3 {
 /* line 75, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_course_details.scss */
 .courses_details_info {
   padding-top: 100px;
-  padding-bottom: 200px;
+  padding-bottom: 98px;
 }
 
 @media (max-width: 767px) {
@@ -3029,10 +3029,10 @@ h3 {
 
 /* line 82, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_course_details.scss */
 .courses_details_info .single_courses h3 {
-  font-size: 36px;
+  font-size: 16px;
   font-weight: 400;
   color: #1F1F1F;
-  margin-bottom: 30px;
+  margin-bottom: 8px;
 }
 
 /* line 87, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_course_details.scss */
@@ -3101,8 +3101,8 @@ h3 {
 .courses_details_info .courses_sidebar .author_info {
   border: 1px solid #E8E8E8;
   padding: 30px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 66px;
+  margin-bottom: 29px;
 }
 
 /* line 136, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_course_details.scss */
@@ -6777,5 +6777,27 @@ table#cart tfoot td {
 
 .actions .btn-danger {
     float: right;
-} 
+}
+.courses_details_info .single_courses .feedback_info {
+    border: 1px solid #E8E8E8;
+    padding: 17px;
+    margin-top: -26px;
+}
+    .courses_details_info .single_courses .feedback_info textarea {
+        margin-top: 8px;
+        border: 1px solid #E8E8E8;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        padding: 15px;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+.boxed_btn courses {
+    padding: 0px 50px;
+}
+h1.thongtin {
+    font-size: 35px;
+    padding-bottom: 14px;
+    font-family: "Roboto";
+}
 /*# sourceMappingURL=style.css.map */

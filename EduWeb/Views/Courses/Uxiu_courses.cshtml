@@ -44,93 +44,21 @@
         <div class="row">
             <div class="col-xl-7 col-lg-7">
                 <div class="single_courses">
-                    <h3>Objectives</h3>
-                    <p>UX UI Design Course is the course that helps you to know how to design UI and UX for relevance and effectiveness. Through the course, you will learn the elements on the web, how to create a web interface or the surfing behavior of the majority of users.</p>
-                    <h3 class="second_title">Course Outline</h3>
-                </div>
-                <div class="outline_courses_info">
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <i class="flaticon-question"></i> Overview Introduction
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                    Overview Introduction Learn about the website interface design process Steps in the website interface design process Learn about UX Research Research steps UX Research
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                       <span> <i class="flaticon-question"></i>Presentation of UX Research / Grid</span>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="">
-                                <div class="card-body">
-                                    UX Research Layout Learn about grid How to use grid Build information architecture (IA)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <i class="flaticon-question"></i> Will you transfer my site?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                    Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="heading_4">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
-                                        <i class="flaticon-question"></i> Theory
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse_4" class="collapse" aria-labelledby="heading_4" data-parent="#accordion">
-                                <div class="card-body">
-                                    Learn colors How to use color in a blueprint How to calculate line-height, widh content ... The fonts often used in interface design Note when using fonts Learn icon font Balanced layout in web design Note when using product photos
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="heading_5">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" aria-controls="collapse_5">
-                                        <i class="flaticon-question"></i> Final project <span>with team</span>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse_5" class="collapse" aria-labelledby="heading_5" data-parent="#accordion">
-                                <div class="card-body">
-                                    Perfect the web Guide to responsive design
-                                </div>
-                            </div>
-                        </div>
+                    <div class="feedback_info">
+                        <h3>Write your feedback</h3>
+                        <form action="#">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
+                            <button type="submit" class="boxed_btn courses">Submit</button>
+                        </form>
                     </div>
                 </div>
+                
             </div>
             <div class="col-xl-5 col-lg-5">
                 <div class="courses_sidebar">
                     <div class="video_thumb">
-                        <img src="~/Content/img/latest_blog/video.png" alt="">
-                        <a class="popup-video" href="https://www.youtube.com/watch?v=AjgD3CvWzS0">
-                            <i class="fa fa-play"></i>
-                        </a>
+                        <img src="~/Content/img/courses/2.png" alt="">
+                        
                     </div>
                     <div class="author_info">
                         <div class="auhor_header">
@@ -152,21 +80,8 @@
                             <li><a href="#"> <i class="ti-linkedin"></i> </a></li>
                         </ul>
                     </div>
-                    <a href="#" class="boxed_btn">Buy Course</a>
-                    <div class="feedback_info">
-                        <h3>Write your feedback</h3>
-                        <p>Your rating</p>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-
-                        <form action="#">
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
-                            <button type="submit" class="boxed_btn">Submit</button>
-                        </form>
-                    </div>
+                    <a href="@Url.Action("Payment","Cart",new { id= 1})" class="boxed_btn">Buy Course</a>
+                    
                 </div>
             </div>
         </div>

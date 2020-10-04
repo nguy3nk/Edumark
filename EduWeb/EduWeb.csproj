@@ -186,6 +186,7 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeturersController.cs" />
+    <Compile Include="Controllers\RegistersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -6054,6 +6055,9 @@
     <Content Include="Views\Courses\Uxiu_courses.cshtml" />
     <Content Include="Views\Courses\Wordpress_courses.cshtml" />
     <Content Include="Views\Leturers\Index.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Registers\Details.cshtml" />
+    <Content Include="Views\Registers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

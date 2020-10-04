@@ -45,92 +45,21 @@
         <div class="row">
             <div class="col-xl-7 col-lg-7">
                 <div class="single_courses">
-                    <h3>Objectives</h3>
-                    <p>In this course, you will start with the most basic knowledge that is absolutely essential to all those wishing to build and administer a website with WordPress. From the knowledge, terminology of hosting to how to use it to bring WordPress up and finally complete WordPress website with massive WordPress plugin and themes.</p>
-                    <h3 class="second_title">Course Outline</h3>
-                </div>
-                <div class="outline_courses_info">
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <i class="flaticon-question"></i>WordPress Programming Tutorial
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                    Students will be introduced to word press platforms to create wordpress websites
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        <span><i class="flaticon-question"></i>Plugin programming guide</span>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="">
-                                <div class="card-body">
-                                    Instructions for using free plugins to set up using multiple themes on a WordPress website, support setting up Menus and Widgets for each theme.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <i class="flaticon-question"></i> Programming Guide Themes
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                    Students are guided to choose topics to use with the website in the best way.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="heading_4">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
-                                        <i class="flaticon-question"></i> WordPress API
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse_4" class="collapse" aria-labelledby="heading_4" data-parent="#accordion">
-                                <div class="card-body">
-                                    Students are instructed to use the API with basic plugins to display post information from a WordPress website.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="heading_5">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" aria-controls="collapse_5">
-                                        <i class="flaticon-question"></i> Final project <span>with website</span>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse_5" class="collapse" aria-labelledby="heading_5" data-parent="#accordion">
-                                <div class="card-body">
-                                    At the end of the course, students will build a fully functional website that can be used in life
-                                </div>
-                            </div>
-                        </div>
+                    <div class="feedback_info">
+                        <h3>Write your feedback</h3>
+                        <form action="#">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
+                            <button type="submit" class="boxed_btn courses">Submit</button>
+                        </form>
                     </div>
                 </div>
+                
             </div>
             <div class="col-xl-5 col-lg-5">
                 <div class="courses_sidebar">
                     <div class="video_thumb">
-                        <img src="~/Content/img/latest_blog/video.png" alt="">
-                        <a class="popup-video" href="https://www.youtube.com/watch?v=AjgD3CvWzS0">
-                            <i class="fa fa-play"></i>
-                        </a>
+                        <img src="~/Content/img/courses/3.png" alt="">
+                       
                     </div>
                     <div class="author_info">
                         <div class="auhor_header">
@@ -152,21 +81,8 @@
                             <li><a href="#"> <i class="ti-linkedin"></i> </a></li>
                         </ul>
                     </div>
-                    <a href="#" class="boxed_btn">Buy Course</a>
-                    <div class="feedback_info">
-                        <h3>Write your feedback</h3>
-                        <p>Your rating</p>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-                        <i class="flaticon-mark-as-favorite-star"></i>
-
-                        <form action="#">
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
-                            <button type="submit" class="boxed_btn">Submit</button>
-                        </form>
-                    </div>
+                    <a href="@Url.Action("Payment","Cart",new { id= 1})" class="boxed_btn">Buy Course</a>
+                    
                 </div>
             </div>
         </div>
