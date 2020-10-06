@@ -41,7 +41,8 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Class @class = _classRepository.GetAll().AsQueryable().Include(c => c.Course).Include(c => c.Lecturer).FirstOrDefault(x => x.ClassId == id);
+
+            Class @class = _classRepository.GetAll().AsQueryable().Include(c => c.Course).Include(c => c.Lecturer).Include(p => p.Students).Include(p => p.Students.Select(st => st.Scores)).FirstOrDefault(x => x.ClassId == id);
             //Class @class = db.Classes.Find(id);
             if (@class == null)
             {

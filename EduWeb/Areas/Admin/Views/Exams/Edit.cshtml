@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Exam</h4>
         <hr />
@@ -19,9 +19,13 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ExamTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ExamTime, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="input-group date col-md-10" id="reservationdate" data-target-input="nearest">
+                @Html.EditorFor(model => model.ExamTime, new { htmlAttributes = new { @class = "form-control datetimepicker-input", data_target = "#reservationdate" } })
                 @Html.ValidationMessageFor(model => model.ExamTime, "", new { @class = "text-danger" })
+                @*<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />*@
+                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
             </div>
         </div>
 
@@ -52,3 +56,18 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Areas/Admin/Content/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/Areas/Admin/Content/plugins/inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="~/Areas/Admin/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script>
+        $(function () {
+            //Timepicker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+        })
+    </script>
+}

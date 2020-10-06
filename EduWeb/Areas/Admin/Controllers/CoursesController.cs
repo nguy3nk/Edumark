@@ -40,10 +40,12 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = _course.Get(id);
-            ICollection<Program> programs = _program.GetAll().AsQueryable().Include(p => p.Course).Include(p => p.Subject).Where(x => x.CourseId == course.CourseId).ToList();
+
+            Course course = _course.GetAll().AsQueryable().Include(p => p.Programs.Select(s => s.Subject)).Where(c => c.CourseId == id).FirstOrDefault();
+            //Course course = _course.Get(id);
+            //ICollection<Program> programs = _program.GetAll().AsQueryable().Include(p => p.Course).Include(p => p.Subject).Where(x => x.CourseId == course.CourseId).ToList();
             //ICollection<Program> programs = _program.GetAll().AsQueryable().Where(x => x.CourseId == course.CourseId).Include(p => p.Subject).ToList();
-            course.Programs = programs;
+            //course.Programs = programs;
             //Course course = db.Courses.Find(id);
             if (course == null)
             {
@@ -63,7 +65,7 @@ namespace EduWeb.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseId,CourseName,Description,Image,Price,SalePrice")] Course course)
+        public ActionResult Create([Bind(Include = "CourseId,CourseName,Programs,Description,Image,Price,SalePrice")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -83,10 +85,11 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = _course.Get(id);
-            ICollection<Program> programs = _program.GetAll().AsQueryable().Include(p => p.Course).Include(p => p.Subject).Where(x => x.CourseId == course.CourseId).ToList();
+            //Course course = _course.Get(id);
+            Course course = _course.GetAll().AsQueryable().Include(p => p.Programs.Select(s => s.Subject)).Where(c => c.CourseId == id).FirstOrDefault();
+            //ICollection<Program> programs = _program.GetAll().AsQueryable().Include(p => p.Course).Include(p => p.Subject).Where(x => x.CourseId == course.CourseId).ToList();
             //ICollection<Program> programs = _program.GetAll().AsQueryable().Where(x => x.CourseId == course.CourseId).Include(p => p.Subject).ToList();
-            course.Programs = programs;
+            //course.Programs = programs;
             //Course course = db.Courses.Find(id);
             if (course == null)
             {
@@ -104,11 +107,13 @@ namespace EduWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _course.Edit(course);
+                if(_course.Edit(course))
                 //db.Entry(course).State = EntityState.Modified;
                 //db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ICollection<Program> programs = _program.GetAll().AsQueryable().Include(p => p.Course).Include(p => p.Subject).Where(x => x.CourseId == course.CourseId).ToList();
+            course.Programs = programs;
             return View(course);
         }
 

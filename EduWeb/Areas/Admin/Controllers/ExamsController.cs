@@ -19,19 +19,25 @@ namespace EduWeb.Areas.Admin.Controllers
         Repository<Exam> _exam;
         Repository<Class> _class;
         Repository<Program> _program;
+        Repository<Subject> _subject;
+        Repository<Course> _course;
 
         public ExamsController()
         {
             _exam = new Repository<Exam>();
             _class = new Repository<Class>();
             _program = new Repository<Program>();
+            _subject = new Repository<Subject>();
+            _course = new Repository<Course>();
         }
         // GET: Admin/Exams
         public ActionResult Index()
         {
-            var exams = _exam.GetAll().AsQueryable().Include(e => e.Class).Include(e => e.Program);
+            var classes = _class.GetAll().AsQueryable().Include(e => e.Lecturer).Include(e => e.Lecturer.Account);
+            //var exams = _exam.GetAll().AsQueryable().Include(e => e.Class).Include(e => e.Program);
             //var exams = db.Exams.Include(e => e.Class).Include(e => e.Program);
-            return View(exams.ToList());
+            return View(classes.ToList());
+            //return View(exams.ToList());
         }
 
         // GET: Admin/Exams/Details/5
@@ -41,20 +47,24 @@ namespace EduWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Exam exam = _exam.GetAll().AsQueryable().Include(c => c.Class).Include(e => e.Program).FirstOrDefault(x => x.ExamId == id);
+            Class @class = _class.GetAll().AsQueryable().Include(e => e.Exams).Include(e => e.Lecturer.Account).Include(e => e.Course.Programs.Select(x=> x.Subject)).FirstOrDefault();
+            //Exam exam = _exam.GetAll().AsQueryable().Include(c => c.Class).Include(e => e.Program).FirstOrDefault(x => x.ExamId == id);
             //Exam exam = db.Exams.Find(id);
-            if (exam == null)
+            if (@class == null)
             {
                 return HttpNotFound();
             }
-            return View(exam);
+            return View(@class);
         }
 
         // GET: Admin/Exams/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.ClassId = new SelectList(_class.GetAll(), "ClassId", "ClassName");
-            ViewBag.ProgramId = new SelectList(_program.GetAll(), "ProgramId", "ProgramId");
+
+            var program = _exam.GetAll().Where(p => p.ClassId == id).Select(l => l.ProgramId);
+            var dataSelect = _program.GetAll().AsQueryable().Include(x => x.Subject).Where(x => !program.Contains(x.ProgramId));
+            ViewBag.ClassId = new SelectList(_class.GetAll().Where(x => x.ClassId == id), "ClassId", "ClassName");
+            ViewBag.ProgramId = new SelectList(dataSelect, "ProgramId", "Subject.Name");
             //ViewBag.ClassId = new SelectList(db.Classes, "ClassId", "ClassName");
             //ViewBag.ProgramId = new SelectList(db.Programs, "ProgramId", "ProgramId");
             return View();

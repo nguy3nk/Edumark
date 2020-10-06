@@ -11,76 +11,81 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>BlogPost</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.BlogId, "BlogId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("BlogId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.BlogId, "", new { @class = "text-danger" })
-            </div>
+<div class="form-horizontal">
+    <h4>BlogPost</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.BlogId, "BlogId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("BlogId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.BlogId, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PostTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PostTitle, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PostTitle, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PostTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PostTitle, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PostTitle, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Resource, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Resource, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Resource, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Resource, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Resource, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Resource, "", new { @class = "text-danger" })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UploadDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UploadDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UploadDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PostImage, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PostImage, new { htmlAttributes = new { @class = "form-control upload_file", PlaceHolder = "Choose Image..." }, id= "chooseImage" })
-                @Html.ValidationMessageFor(model => model.PostImage, "", new { @class = "text-danger" })
-                <br />
-                    <img style="width: 126px" id="coverPicture" data-for="PostImage" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BlogContent, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.TextAreaFor(model => model.BlogContent, new { @class = "form-control", name = "content_news", id = "content" })*@
-                @Html.TextAreaFor(model => model.BlogContent, new { @class = "form-control" , id = "txtContent" })
-                @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    </div>
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+    <div class="form-group">
+        @Html.LabelFor(model => model.UploadDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="input-group date col-md-10" id="reservationdate" data-target-input="nearest">
+            @Html.EditorFor(model => model.UploadDate, new { htmlAttributes = new { @class = "form-control datetimepicker-input", data_target = "#reservationdate" } })
+
+            @Html.ValidationMessageFor(model => model.UploadDate, "", new { @class = "text-danger" })
+            @*<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />*@
+            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
             </div>
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PostImage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PostImage, new { htmlAttributes = new { @class = "form-control upload_file", PlaceHolder = "Choose Image..." }, id = "chooseImage" })
+            @Html.ValidationMessageFor(model => model.PostImage, "", new { @class = "text-danger" })
+            <br />
+            <img style="width: 126px" id="coverPicture" data-for="PostImage" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BlogContent, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.TextAreaFor(model => model.BlogContent, new { @class = "form-control", name = "content_news", id = "content" })*@
+            @Html.TextAreaFor(model => model.BlogContent, new { @class = "form-control", id = "txtContent" })
+            @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
@@ -91,6 +96,9 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/tinymce")
     <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/Admin/Content/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/Areas/Admin/Content/plugins/inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="~/Areas/Admin/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
     <script>
         $(function () {
             $('.upload_file').click(function () {
@@ -104,6 +112,10 @@
                 }
                 finder.popup();
             })
+            //Timepicker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
         });
 
         var editor = CKEDITOR.replace('txtContent', {
